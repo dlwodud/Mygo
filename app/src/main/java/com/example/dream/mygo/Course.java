@@ -50,8 +50,6 @@ public class Course extends Fragment {
     }
 
 
-
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -100,8 +98,6 @@ public class Course extends Fragment {
         WorryAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.WorryR, android.R.layout.simple_spinner_dropdown_item);
         WorrySpinner.setAdapter(WorryAdapter);
         WorrySpinner.setSelection(0);
-
-
 
         courseListView = (ListView) getView().findViewById(R.id.courseListView);
         courseList = new ArrayList<CourseNotice>();
@@ -156,41 +152,40 @@ public class Course extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    class BackgroundTask extends AsyncTask<Void, Void,String>
-    {
+
+    class BackgroundTask extends AsyncTask<Void, Void, String> {
         String target;
 
         @Override
         protected String doInBackground(Void... voids) {
-            try{
-                URL url =new URL(target);
-                HttpURLConnection httpURLConnection =(HttpURLConnection) url . openConnection();
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String temp;
                 StringBuffer stringBuilder = new StringBuffer();
-                while ((temp = bufferedReader.readLine())!= null)
-                {
+                while ((temp = bufferedReader.readLine()) != null) {
                     stringBuilder.append(temp + "\n");
                 }
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return stringBuilder.toString().trim();
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
         }
 
         @Override
-        protected void onPreExecute(){
+        protected void onPreExecute() {
             try {
                 if (WorrySpinner.getSelectedItemPosition() == 0)
                     courseWorry = "*";
                 else
                     courseWorry = WorrySpinner.getSelectedItem().toString();
-                target="http://dlwodud200.cafe24.com/CourseList.php?courseWorry="+URLEncoder.encode(courseWorry,"UTF-8");
+                target = "http://dlwodud200.cafe24.com/CourseList.php?courseWorry=" + URLEncoder.encode(courseWorry, "UTF-8");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -207,12 +202,13 @@ public class Course extends Fragment {
 
 
         @Override
-        public  void onProgressUpdate(Void... values){
-            super. onProgressUpdate();
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
         }
+
         @Override
-        public  void onPostExecute(String result){
-            try{
+        public void onPostExecute(String result) {
+            try {
                 courseList.clear();
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
@@ -221,24 +217,20 @@ public class Course extends Fragment {
                 String courseTitle;  // 제목
                 String courseStroy;  // 내용
                 String courseDate1; // 날짜
-                int courseHit;      // 조회수
-                int count =0;
+                int count = 0;
 
-                while (count<jsonArray.length())
-                {
+                while (count < jsonArray.length()) {
                     JSONObject object = jsonArray.getJSONObject(count);
-                    courseID =object.getInt("courseID");
-                    userID =object.getString("userID");
-                    courseStroy =object.getString("courseStroy");
-                    courseTitle =object.getString("courseTitle");
-                    courseDate1 =object.getString("courseDate1");
-                    courseHit =object.getInt("courseHit");
-                    CourseNotice courseNotice = new CourseNotice(courseID,userID,courseTitle,courseStroy,courseWorry,courseDate1,courseHit);
+                    courseID = object.getInt("courseID");
+                    userID = object.getString("userID");
+                    courseStroy = object.getString("courseStroy");
+                    courseTitle = object.getString("courseTitle");
+                    courseDate1 = object.getString("courseDate1");
+                    CourseNotice courseNotice = new CourseNotice(courseID, userID, courseTitle, courseStroy, courseWorry, courseDate1);
                     courseList.add(courseNotice);
                     count++;
                 }
-                if(count == 0)
-                {
+                if (count == 0) {
                     AlertDialog dialog;
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(Course.this.getActivity());
                     dialog = builder1.setMessage("조회된 게시글이 없습니다.")
@@ -247,7 +239,7 @@ public class Course extends Fragment {
                     dialog.show();
                 }
                 adapter.notifyDataSetChanged();
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

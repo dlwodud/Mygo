@@ -11,16 +11,18 @@ import java.util.Map;
  */
 
 public class ValidateRequest extends StringRequest {
-    final static private String URL ="http://dlwodud200.cafe24.com/UserValidate.php";
+    final static private String URL = "http://dlwodud200.cafe24.com/UserValidate.php";
     private Map<String, String> parameters;
-    public ValidateRequest(String userID,Response.Listener<String> listener){
-        super(Method.POST, URL , listener, null);
+
+    public ValidateRequest(String userID, Response.Listener<String> listener) {
+        super(Method.POST, URL, listener, null);
         parameters = new HashMap<>();
-        parameters.put("userID",userID);
+        parameters.put("userID", userID);
 
     }
+
     @Override
-    public Map<String, String> getParams(){
+    public Map<String, String> getParams() {
         return parameters;
     }
 }

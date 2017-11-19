@@ -8,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -74,7 +72,8 @@ public class Notice1 extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    public void onActivityCreated (Bundle b) {
+
+    public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
         noticeListView = (ListView) getActivity().findViewById(R.id.noticeListView);
         noticeList = new ArrayList<Notice>();
@@ -120,61 +119,60 @@ public class Notice1 extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    class BackgroundTask extends AsyncTask<Void, Void,String>
-    {
+
+    class BackgroundTask extends AsyncTask<Void, Void, String> {
         String target;
 
-       @Override
+        @Override
         protected String doInBackground(Void... voids) {
-           try{
-               URL url =new URL(target);
-               HttpURLConnection httpURLConnection =(HttpURLConnection) url . openConnection();
-               InputStream inputStream = httpURLConnection.getInputStream();
-               BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-               String temp;
-               StringBuffer stringBuilder = new StringBuffer();
-               while ((temp = bufferedReader.readLine())!= null)
-               {
-                   stringBuilder.append(temp + "\n");
-               }
-               bufferedReader.close();
-               inputStream.close();
-               httpURLConnection.disconnect();
-               return stringBuilder.toString().trim();
-           } catch (Exception e){
-               e.printStackTrace();
-           }
+            try {
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuffer stringBuilder = new StringBuffer();
+                while ((temp = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return null;
         }
 
         @Override
-        protected void onPreExecute(){
-            target="http://dlwodud200.cafe24.com/NoticeList.php";
+        protected void onPreExecute() {
+            target = "http://dlwodud200.cafe24.com/NoticeList.php";
         }
 
         @Override
-        public  void onProgressUpdate(Void... values){
-            super. onProgressUpdate();
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
         }
+
         @Override
-        public  void onPostExecute(String result){
-            try{
+        public void onPostExecute(String result) {
+            try {
                 JSONObject jsonObject = new JSONObject(result);
-                JSONArray jsonArray =jsonObject.getJSONArray("response");
+                JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
                 String noticeContent, noticeName, noticeDate;
-                while (count < jsonArray.length())
-                {
-                    JSONObject object =jsonArray.getJSONObject(count);
-                    noticeContent =object.getString("noticeContent");
-                    noticeName=object.getString("noticeName");
-                    noticeDate=object.getString("noticeDate");
+                while (count < jsonArray.length()) {
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    noticeContent = object.getString("noticeContent");
+                    noticeName = object.getString("noticeName");
+                    noticeDate = object.getString("noticeDate");
                     Notice notice = new Notice(noticeContent, noticeName, noticeDate);
                     noticeList.add(notice);
                     adapter.notifyDataSetChanged();
                     count++;
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

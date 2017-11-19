@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dream.mygo.Redate">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:inputType="none"
+            android:hint="제목"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/colorPont1"
+            android:textColorHint="@color/colorPont1"
+            android:id="@+id/titleText"
+            android:drawableStart="@drawable/ic_edit_black_24dp"
+            android:drawableLeft="@drawable/ic_edit_black_24dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPont2"/>
+
+        <ListView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:hint="댓글"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/colorPont1"
+            android:textColorHint="@color/colorPont1"
+            android:id="@+id/redateText"
+            android:drawableStart="@drawable/ic_edit_black_24dp"
+            android:drawableLeft="@drawable/ic_edit_black_24dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimaryDark"/>
+
+        <EditText
+            android:id="@+id/retitleText"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPont2"
+            android:drawableLeft="@drawable/ic_edit_black_24dp"
+            android:drawableStart="@drawable/ic_edit_black_24dp"
+            android:hint="내용 적기"
+            android:padding="10dp"
+            android:textColor="@color/colorPont1"
+            android:textColorHint="@color/colorPont1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/backButton"
+                android:textSize="20dp"
+                android:hint="뒤로가기"
+                android:drawableStart="@drawable/ic_undo_black_24dp"
+                android:drawableLeft="@drawable/ic_undo_black_24dp"/>
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPont"
+            android:text="댓글 달기 "
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:id="@+id/okButton"/>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

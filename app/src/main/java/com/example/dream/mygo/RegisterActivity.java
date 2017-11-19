@@ -11,14 +11,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 
 public class RegisterActivity extends Activity {
 
@@ -160,13 +157,12 @@ public class RegisterActivity extends Activity {
                                 dialog.show();
                             }
 
-                        } catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID,userPassword,userGender,userWorry ,userEmail, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userGender, userWorry, userEmail, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
 
@@ -176,10 +172,9 @@ public class RegisterActivity extends Activity {
 
 
     @Override
-    protected  void onStop(){
+    protected void onStop() {
         super.onStop();
-        if(dialog != null)
-        {
+        if (dialog != null) {
             dialog.dismiss();
             dialog = null;
         }

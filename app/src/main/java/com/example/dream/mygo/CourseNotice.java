@@ -10,7 +10,6 @@ public class CourseNotice {
     String courseTitle;  // 제목
     String courseStroy;  // 내용
     String courseDate1;  //  날짜
-    int courseHit;      // 조회수
     String courseWorry;
 
     public int getCourseID() {
@@ -54,15 +53,6 @@ public class CourseNotice {
         this.courseDate1 = courseDate1;
     }
 
-
-    public int getCourseHit() {
-        return courseHit;
-    }
-
-    public void setCourseHit(int courseHit) {
-        this.courseHit = courseHit;
-    }
-
     public String getCourseWorry() {
         return courseWorry;
     }
@@ -72,13 +62,12 @@ public class CourseNotice {
     }
 
 
-    public CourseNotice(int courseID, String userID, String courseTitle, String courseStroy, String courseWorry, String courseDate1,int courseHit) {
+    public CourseNotice(int courseID, String userID, String courseTitle, String courseStroy, String courseWorry, String courseDate1) {
         this.courseID = courseID;
         this.userID = userID;
         this.courseTitle = courseTitle;
         this.courseStroy = courseStroy;
         this.courseDate1 = courseDate1;
-        this.courseHit = courseHit;
         this.courseWorry = courseWorry;
     }
 }

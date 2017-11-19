@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.List;
 
 /**
@@ -40,7 +39,7 @@ public class NoticeListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View View, ViewGroup viewGroup) {
-        View v =View.inflate(context,R.layout.notice,null);
+        View v = View.inflate(context, R.layout.notice, null);
         TextView noticeText = (TextView) v.findViewById(R.id.noticeText);
         TextView nameText = (TextView) v.findViewById(R.id.nameText);
         TextView dateText = (TextView) v.findViewById(R.id.dateText);
@@ -50,6 +49,6 @@ public class NoticeListAdapter extends BaseAdapter {
         dateText.setText(noticeList.get(i).getDate());
 
         v.setTag(noticeList.get(i).getNotice());
-        return  v;
+        return v;
     }
 }

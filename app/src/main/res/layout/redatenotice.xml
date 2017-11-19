@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.example.dream.mygo.CourseNotice">
+    tools:context="com.example.dream.mygo.RedateNotice">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/courseID"
+                android:id="@+id/redateID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -31,19 +31,7 @@
 
 
             <TextView
-                android:id="@+id/courseTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1.04"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="고민 제목"
-                android:textColor="@color/colorPont2"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/courseDate1"
+                android:id="@+id/redateDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -79,23 +67,12 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/courseStroy"
+            android:id="@+id/redateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
-            android:text="고민 내용"
-            android:textColor="@color/colorPont2"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/courseReDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="right"
-            android:padding="3dp"
-            android:text="댓글"
+            android:text="댓글 내용"
             android:textColor="@color/colorPont2"
             android:textStyle="bold" />
 
