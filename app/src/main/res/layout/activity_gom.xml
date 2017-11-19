@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dream.mygo.GomActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="GOM민글"/>
+
+
+        </LinearLayout>
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Home"
+                    android:layout_gravity="left"
+                    android:padding="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
+                    android:id="@+id/homebutton"
+                    android:drawableStart="@drawable/ic_home_black_24dp"
+                    android:drawableLeft="@drawable/ic_home_black_24dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimary"/>
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:hint="GOM민판"
+                    android:layout_gravity="left"
+                    android:padding="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
+                    android:id="@+id/gombutton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorPrimary"/>
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:hint="글쓰기"
+                    android:layout_gravity="left"
+                    android:padding="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
+                    android:id="@+id/strenuousbutton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorPrimary"/>
+                <Button
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Logout"
+                    android:layout_gravity="left"
+                    android:padding="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffffff"
+                    android:id="@+id/Logoutbutton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorPrimary"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/notice">
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment">
+
+            </RelativeLayout>
+
+        </FrameLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

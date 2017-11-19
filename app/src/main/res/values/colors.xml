@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3DB7CC</color>
+    <color name="colorPrimaryDark">#F2CB61</color>
+    <color name="colorAccent">#536E7A</color>
+    <color name="colorPont">#000000</color>
+    <color name="colorPont1">#8C8C8C</color>
+    <color name="colorPont2">#353535</color>
+    <color name="colorpont3">#008299</color>
+    <color name="colorpont4">#1294AB</color>
+</resources>

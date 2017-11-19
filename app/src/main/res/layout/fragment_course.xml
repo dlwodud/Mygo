@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.dream.mygo.Course">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:paddingRight="10dp">
+
+
+        <Spinner
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginRight="10dp"
+            android:id="@+id/WorrySpinner"></Spinner>
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPont2"
+            android:background="@color/colorpont3"
+            android:text="고민 검색"
+            android:layout_gravity="center"
+            android:id="@+id/searchButton"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimary">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:id="@+id/courseListView"
+            android:dividerHeight="10dp"
+            android:divider="#FFFF"
+            android:padding="5dp"
+            >
+        </ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.dream.mygo.CourseNotice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/courseID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:background="#00D8FF"
+                android:padding="3dp"
+                android:text="번호"
+                android:textColor="#ffffff" />
+
+
+            <TextView
+                android:id="@+id/courseTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.04"
+                android:padding="3dp"
+                android:text="고민 제목"
+                android:textColor="@color/colorPont2"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/courseDate1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="#2F9D27"
+                android:padding="3dp"
+                android:text="날짜"
+                android:textColor="@color/colorPont2"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="수정"
+                android:textColor="@color/colorPont2"
+                android:visibility="invisible" />
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="삭제"
+                android:textColor="@color/colorPont2"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/courseStroy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:text="고민 내용"
+            android:textColor="@color/colorPont2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/courseReDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryDark"
+            android:padding="3dp"
+            android:text="댓글"
+            android:textColor="@color/colorPont2"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorpont3"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

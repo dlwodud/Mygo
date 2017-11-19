@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Worry">
+        <item>연애</item>
+        <item>직장</item>
+        <item>취업</item>
+        <item>학교</item>
+        <item>돈</item>
+        <item>의학</item>
+        <item>음식</item>
+        <item>일상</item>
+        <item>해외여행</item>
+        <item>부부</item>
+        <item>진로</item>
+        <item>군대</item>
+        <item>게임</item>
+        <item>국내여행</item>
+        <item>법,소송</item>
+        <item>IT</item>
+        <item>친구</item>
+    </string-array>
+    <string-array name="WorryR">
+        <item>전체</item>
+        <item>연애</item>
+        <item>직장</item>
+        <item>취업</item>
+        <item>학교</item>
+        <item>돈</item>
+        <item>의학</item>
+        <item>음식</item>
+        <item>일상</item>
+        <item>해외여행</item>
+        <item>부부</item>
+        <item>진로</item>
+        <item>군대</item>
+        <item>게임</item>
+        <item>국내여행</item>
+        <item>법,소송</item>
+        <item>IT</item>
+        <item>친구</item>
+    </string-array>
+    <string-array name="Date">
+        <item>2015년</item>
+        <item>2016년</item>
+        <item>2017년</item>
+        <item>2018년</item>
+        <item>2019년</item>
+        <item>2020년</item>
+        <item>2021년</item>
+        <item>2022년</item>
+
+
+    </string-array>
+</resources>
