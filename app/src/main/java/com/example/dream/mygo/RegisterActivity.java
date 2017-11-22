@@ -42,6 +42,9 @@ public class RegisterActivity extends Activity {
         final EditText passwordText = (EditText) findViewById(R.id.passwordText);
         final EditText emilText = (EditText) findViewById(R.id.emailText);
 
+        idText.setNextFocusDownId(R.id.passwordText);
+        passwordText.setNextFocusDownId(R.id.emailText);
+
 
         RadioGroup genderGroup = (RadioGroup) findViewById(R.id.genderGroup);
         int genderGroupID = genderGroup.getCheckedRadioButtonId();

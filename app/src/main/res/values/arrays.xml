@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="Gder">
+        <item>성별/전체</item>
+        <item>남성</item>
+        <item>여성</item>
+    </string-array>
     <string-array name="Worry">
         <item>연애</item>
         <item>직장</item>
@@ -20,7 +25,7 @@
         <item>친구</item>
     </string-array>
     <string-array name="WorryR">
-        <item>전체</item>
+        <item>고민/전체</item>
         <item>연애</item>
         <item>직장</item>
         <item>취업</item>
@@ -39,16 +44,5 @@
         <item>IT</item>
         <item>친구</item>
     </string-array>
-    <string-array name="Date">
-        <item>2015년</item>
-        <item>2016년</item>
-        <item>2017년</item>
-        <item>2018년</item>
-        <item>2019년</item>
-        <item>2020년</item>
-        <item>2021년</item>
-        <item>2022년</item>
 
-
-    </string-array>
 </resources>

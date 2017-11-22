@@ -19,24 +19,12 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/courseID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:background="#00D8FF"
-                android:gravity="left"
-                android:padding="3dp"
-                android:text="번호"
-                android:textColor="#ffffff" />
-
-
-            <TextView
                 android:id="@+id/courseTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1.04"
-                android:gravity="center"
+                android:gravity="left"
                 android:padding="3dp"
                 android:text="고민 제목"
                 android:textColor="@color/colorPont2"

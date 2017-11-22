@@ -62,6 +62,20 @@ public class MainActivity extends Activity {
             }
         });
 
+        final Button Imbutton =(Button)findViewById(R.id.Imbutton);
+        Imbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notice.setVisibility(View.GONE);
+                FragmentManager fragmentManager = mActivity.getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment, new MyHom());
+                fragmentTransaction.commit();
+            }
+        });
+
+
+
         image01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

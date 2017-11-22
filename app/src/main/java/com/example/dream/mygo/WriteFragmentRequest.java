@@ -22,6 +22,7 @@ public class WriteFragmentRequest extends StringRequest {
         parameters.put("courseTitle", courseTitle);
         parameters.put("courseStroy", courseStroy);
         parameters.put("courseWorry", courseWorry);
+
     }
 
     @Override

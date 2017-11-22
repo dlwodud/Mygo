@@ -70,48 +70,59 @@
                     android:layout_gravity="center"
                     android:id="@+id/validateButton"
                     android:textColor="@color/colorPont"/>
+
                 <EditText
+                    android:id="@+id/idText"
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:hint="아이디"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorPont2"
+                    android:drawableLeft="@drawable/ic_person_black_24d"
+                    android:drawableStart="@drawable/ic_person_black_24d"
+                    android:hint="아이디"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:nextFocusDown="@+id/passwordText"
                     android:padding="10dp"
                     android:textColor="@color/colorPont1"
-                    android:textColorHint="@color/colorPont1"
-                    android:id="@+id/idText"
-                    android:drawableStart="@drawable/ic_person_black_24d"
-                    android:drawableLeft="@drawable/ic_person_black_24d"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/colorPont2"/>
+                    android:textColorHint="@color/colorPont1" />
 
             </LinearLayout>
 
             <EditText
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:hint="비밀번호"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:textColor="@color/colorPont1"
-                android:textColorHint="@color/colorPont1"
                 android:id="@+id/passwordText"
-                android:drawableStart="@drawable/ic_lock_outline_black_24dp"
-                android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPont2"/>
-            <EditText
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:hint="이메일"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPont2"
+                android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+                android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:maxLength="1"
+                android:nextFocusDown="@+id/emailText"
                 android:padding="10dp"
                 android:textColor="@color/colorPont1"
-                android:textColorHint="@color/colorPont1"
+                android:textColorHint="@color/colorPont1" />
+
+            <EditText
                 android:id="@+id/emailText"
-                android:drawableStart="@drawable/ic_face_black_24dp"
-                android:drawableLeft="@drawable/ic_face_black_24dp"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPont2"/>
+                android:background="@color/colorPont2"
+                android:drawableLeft="@drawable/ic_face_black_24dp"
+                android:drawableStart="@drawable/ic_face_black_24dp"
+                android:hint="이메일"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:nextFocusDown="@+id/worryText"
+                android:padding="10dp"
+                android:textColor="@color/colorPont1"
+                android:textColorHint="@color/colorPont1" />
             <TextView
                 android:padding="10dp"
                 android:layout_width="wrap_content"

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -45,7 +47,7 @@ public class Redate extends Activity {
             finish();
         }
 
-        final EditText titleText = (EditText) findViewById(R.id.titleText);
+        final TextView titleText = (TextView) findViewById(R.id.titleText);
         final String title = getIntent().getStringExtra("title");
         titleText.setText(title.toCharArray(), 0, title.length());
 

@@ -2,8 +2,13 @@ package com.example.dream.mygo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,11 +22,29 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 import java.util.Calendar;
 
+import static android.R.attr.name;
+
 public class Write01 extends Activity {
 
     private ArrayAdapter adapter;
     private Spinner spinner;
     private AlertDialog dialog;
+   // private MyService binder;
+
+  /*  private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            binder = MyService.Stub.aslnterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
+    private Intent intent;
+    private boolean running = true;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +66,10 @@ public class Write01 extends Activity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent =new Intent(Write01.this, MainActivity.class);
+           //     bindService(intent, connection, BIND_AUTO_CREATE);
+             //   running =true;
+              //  new Thread(new GetCountThread()).start();
                 String courseTitle = titleText.getText().toString();
                 String courseWorry = spinner.getSelectedItem().toString();
                 String courseStroy = StroyText.getText().toString();
@@ -79,9 +105,17 @@ public class Write01 extends Activity {
                         }
                     }
                 };
-                WriteFragmentRequest writeFragmentRequest = new WriteFragmentRequest(UserID.getUserID(), courseTitle, courseStroy, courseWorry, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(Write01.this);
-                queue.add(writeFragmentRequest);
+                if (courseTitle.isEmpty() || courseStroy.isEmpty()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Write01.this);
+                    dialog = builder.setMessage("최소 한글자 이상 입력하세요.")
+                            .setPositiveButton("확인", null)
+                            .create();
+                    dialog.show();
+                } else {
+                    WriteFragmentRequest writeFragmentRequest = new WriteFragmentRequest(UserID.getUserID(), courseTitle, courseStroy, courseWorry, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(Write01.this);
+                    queue.add(writeFragmentRequest);
+                }
             }
         });
 
@@ -118,4 +152,32 @@ public class Write01 extends Activity {
         Toast.makeText(this, "'뒤로' 버튼을 한번 더 눌러 종료합니다.", Toast.LENGTH_SHORT);
         lastTimeBackPressed = System.currentTimeMillis();
     }
+    /*
+    private class  GetCountThread implements Runnable{
+        private Handler handler = new Handler();
+        @Override
+        public void run(){
+
+            while (running){
+                if(binder == null){
+                    continue;
+                }
+                handler.post(new Runnable(){
+                    @Override
+                    public void run(){
+                        try{
+                            tvCounter.setText(binder.getCount()+"");
+                        }catch (RemoteException e){
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                try{
+                    Thread.sleep(500);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }*/
 }

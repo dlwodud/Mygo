@@ -1,5 +1,4 @@
 package com.example.dream.mygo;
-
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.net.Uri;
@@ -12,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -34,7 +31,7 @@ import java.util.List;
  * Use the {@link Course#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Course extends Fragment {
+public class MyHom extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,7 +44,7 @@ public class Course extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public Course() {
+    public MyHom() {
         // Required empty public constructor
     }
 
@@ -61,8 +58,8 @@ public class Course extends Fragment {
      * @return A new instance of fragment Course.
      */
     // TODO: Rename and change types and number of parameters
-    public static Course newInstance(String param1, String param2) {
-        Course fragment = new Course();
+    public static MyHom newInstance(String param1, String param2) {
+        MyHom fragment = new MyHom();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -81,10 +78,7 @@ public class Course extends Fragment {
 
     private ArrayAdapter WorryAdapter;
     private Spinner WorrySpinner;
-    private ArrayAdapter GenderAdapter;
-    private Spinner GenderSpinner;
     private String courseWorry = "";
-    private String userGender ="";
     private ListView courseListView;
     private CourseListAdapter adapter;
     private List<CourseNotice> courseList;
@@ -93,21 +87,15 @@ public class Course extends Fragment {
     @Override
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
-
         WorrySpinner = (Spinner) getView().findViewById(R.id.WorrySpinner);
         WorryAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.WorryR, android.R.layout.simple_spinner_dropdown_item);
         WorrySpinner.setAdapter(WorryAdapter);
-
-        GenderSpinner = (Spinner) getView().findViewById(R.id.GenderSpinner);
-        GenderAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.Gder, android.R.layout.simple_spinner_dropdown_item);
-        GenderSpinner.setAdapter(GenderAdapter);
-
         WorrySpinner.setSelection(0);
-        GenderSpinner.setSelection(0);
 
         courseListView = (ListView) getView().findViewById(R.id.courseListView);
         courseList = new ArrayList<CourseNotice>();
         adapter = new CourseListAdapter(MainActivity.mActivity.getApplicationContext(), courseList, this);
+
         courseListView.setAdapter(adapter);
 
         Button searchButton = (Button) getView().findViewById(R.id.searchButton);
@@ -126,7 +114,7 @@ public class Course extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course, container, false);
+        return inflater.inflate(R.layout.fragment_my_hom, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -190,11 +178,7 @@ public class Course extends Fragment {
                     courseWorry = "*";
                 else
                     courseWorry = WorrySpinner.getSelectedItem().toString();
-                if (GenderSpinner.getSelectedItemPosition() == 0)
-                    userGender = "*";
-                else
-                    userGender = GenderSpinner.getSelectedItem().toString();
-                target = "http://dlwodud200.cafe24.com/CourseList.php?courseWorry=" + URLEncoder.encode(courseWorry, "UTF-8")+ "&userGender="+URLEncoder.encode(userGender, "UTF-8");
+                target = "http://dlwodud200.cafe24.com/UHom.php?userID="+URLEncoder.encode(UserID.getUserID(), "UTF-8")+"&courseWorry=" + URLEncoder.encode(courseWorry, "UTF-8");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -235,13 +219,13 @@ public class Course extends Fragment {
                     courseTitle = object.getString("courseTitle");
                     courseStroy = object.getString("courseStroy");
                     courseDate1 = object.getString("courseDate1");
-                    CourseNotice courseNotice = new CourseNotice(courseID, userID, courseTitle, courseStroy, courseWorry, courseDate1);
+                    CourseNotice courseNotice = new CourseNotice(courseID, userID,  courseTitle, courseStroy, courseWorry, courseDate1);
                     courseList.add(courseNotice);
                     count++;
                 }
                 if (count == 0) {
                     AlertDialog dialog;
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(Course.this.getActivity());
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(MyHom.this.getActivity());
                     dialog = builder1.setMessage("조회된 게시글이 없습니다.")
                             .setPositiveButton("확인", null)
                             .create();

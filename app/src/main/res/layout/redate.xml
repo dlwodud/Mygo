@@ -13,7 +13,7 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 
-        <EditText
+        <TextView
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:inputType="none"
@@ -27,6 +27,19 @@
             android:drawableLeft="@drawable/ic_edit_black_24dp"
             android:layout_marginTop="10dp"
             android:background="@color/colorPont2"/>
+        <EditText
+            android:id="@+id/retitleText"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPont2"
+            android:drawableLeft="@drawable/ic_edit_black_24dp"
+            android:drawableStart="@drawable/ic_edit_black_24dp"
+            android:hint="내용 적기"
+            android:padding="10dp"
+            android:textColor="@color/colorPont1"
+            android:textColorHint="@color/colorPont1" />
 
         <ListView
             android:layout_width="300dp"
@@ -41,20 +54,6 @@
             android:drawableLeft="@drawable/ic_edit_black_24dp"
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimaryDark"/>
-
-        <EditText
-            android:id="@+id/retitleText"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorPont2"
-            android:drawableLeft="@drawable/ic_edit_black_24dp"
-            android:drawableStart="@drawable/ic_edit_black_24dp"
-            android:hint="내용 적기"
-            android:padding="10dp"
-            android:textColor="@color/colorPont1"
-            android:textColorHint="@color/colorPont1" />
 
         <LinearLayout
             android:layout_width="wrap_content"

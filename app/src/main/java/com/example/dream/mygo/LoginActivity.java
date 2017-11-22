@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +25,7 @@ public class LoginActivity extends Activity {
 
     private AlertDialog dialog;
     String id;
+
 
 
     @Override
@@ -39,9 +44,12 @@ public class LoginActivity extends Activity {
         final EditText idText = (EditText) findViewById(R.id.idText);
         final EditText passwordText = (EditText) findViewById(R.id.passwordText);
         final Button loginButton = (Button) findViewById(R.id.loginButton);
-        SharedPreferences pref = getSharedPreferences("idtext", MODE_PRIVATE);
-        id = pref.getString("idtext", String.valueOf(false));
-        idText.setText(id);
+        final RadioGroup genderGroup= (RadioGroup)findViewById(R.id.genderGroup);
+        idText.setNextFocusDownId(R.id.passwordText);
+        passwordText.setNextFocusDownId(R.id.loginButton);
+      //  SharedPreferences pref = getSharedPreferences("idtext", MODE_PRIVATE);
+      //  id = pref.getString("idtext", String.valueOf(false));
+      //  idText.setText(id);
 
 
         //  HashMap<String, String> memoDate = mObjFileMgr.load();
@@ -49,6 +57,8 @@ public class LoginActivity extends Activity {
         //    {
         //       idText.setText(memoDate.get("IDText"));
         //    }
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -56,6 +66,9 @@ public class LoginActivity extends Activity {
 
                 final String userID = idText.getText().toString();
                 final String userPassword = passwordText.getText().toString();
+
+
+
                 final HashMap<String, String> memoDate = new HashMap<String, String>();
 
                 Response.Listener<String> responseLister = new Response.Listener<String>() {
@@ -94,7 +107,7 @@ public class LoginActivity extends Activity {
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(userID, userPassword, responseLister);
+                LoginRequest loginRequest = new LoginRequest(userID, userPassword,responseLister);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
 

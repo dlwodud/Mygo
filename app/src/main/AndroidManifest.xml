@@ -24,6 +24,7 @@
         <activity android:name=".Change" />
         <activity android:name=".Redate" />
         <activity android:name=".ChangeRedate" />
+
     </application>
 
 </manifest>

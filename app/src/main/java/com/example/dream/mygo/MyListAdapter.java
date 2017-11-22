@@ -1,5 +1,6 @@
 package com.example.dream.mygo;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -12,26 +13,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONObject;
+
 import java.util.List;
 
-
 /**
- * Created by Dream on 2017-04-16.
+ * Created by Dream on 2017-11-21.
  */
 
-public class CourseListAdapter extends BaseAdapter {
+public class MyListAdapter  extends BaseAdapter {
 
     private Context context;
-    private List<CourseNotice> coursesList;
-
+    private List<MyNotice> coursesList;
     private Fragment parent;
 
 
-    public CourseListAdapter(Context context, List<CourseNotice> coursesList, Fragment parent) {
+    public MyListAdapter(Context context, List<MyNotice> coursesList, Fragment parent) {
         this.context = context;
         this.coursesList = coursesList;
         this.parent = parent;
@@ -103,7 +105,6 @@ public class CourseListAdapter extends BaseAdapter {
         Button deleteButton = (Button) v.findViewById(R.id.deleteButton);
         if (UserID.getUserID().equals(coursesList.get(i).getUserID())) {
             deleteButton.setVisibility(android.view.View.VISIBLE);
-
         } else {
             deleteButton.setWidth(0);
         }
@@ -174,6 +175,4 @@ public class CourseListAdapter extends BaseAdapter {
         return v;
 
     }
-
-
 }
