@@ -2,12 +2,13 @@ package com.example.dream.mygo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.android.volley.RequestQueue;
@@ -20,6 +21,9 @@ public class Change extends Activity {
     private ArrayAdapter adapter;
     private Spinner spinner;
     private AlertDialog dialog;
+    private ArrayAdapter adapter2;
+    private Spinner spinner2;
+    RadioGroup genderGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +38,35 @@ public class Change extends Activity {
         spinner = (Spinner) findViewById(R.id.worryText);
         adapter = ArrayAdapter.createFromResource(this, R.array.Worry, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        spinner2 = (Spinner) findViewById(R.id.ageText);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.Ages, android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter2);
+
         String worry = getIntent().getStringExtra("worry");
+        String age =getIntent().getStringExtra("age");
+        spinner2.setSelection(adapter2.getPosition(age));
+
         spinner.setSelection(adapter.getPosition(worry));
+        genderGroup = (RadioGroup) findViewById(R.id.genderGroup);
+        String gender = getIntent().getStringExtra("gender");
+        if (gender.equals("남성")) {
+            genderGroup.check(R.id.genderMan);
+        } else {
+            genderGroup.check(R.id.genderWoman);
+        }
 
         final EditText titleText = (EditText) findViewById(R.id.titleText);
         String title = getIntent().getStringExtra("title");
         titleText.setText(title.toCharArray(), 0, title.length());
 
-        final EditText stroyText = (EditText) findViewById(R.id.StroyText);
+        final EditText StroyText = (EditText) findViewById(R.id.StroyText);
         String stroy = getIntent().getStringExtra("stroy");
-        stroyText.setText(stroy.toCharArray(), 0, stroy.length());
+        StroyText.setText(stroy.toCharArray(), 0, stroy.length());
+        final EditText timeText = (EditText) findViewById(R.id.timeText);
+        String time = getIntent().getStringExtra("time");
+        time = time.substring(0, time.indexOf(':'));
+        timeText.setText(time.toCharArray(), 0, time.length());
 
         final Button backButton = (Button) findViewById(R.id.backButton);
 
@@ -60,10 +83,19 @@ public class Change extends Activity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //     bindService(intent, connection, BIND_AUTO_CREATE);
+                //   running =true;
+                //  new Thread(new GetCountThread()).start();
                 String courseTitle = titleText.getText().toString();
                 String courseWorry = spinner.getSelectedItem().toString();
-                String courseStroy = stroyText.getText().toString();
+                String courseStroy = StroyText.getText().toString();
+                int genderGroupID = genderGroup.getCheckedRadioButtonId();
+                String targetGender = ((RadioButton) findViewById(genderGroupID)).getText().toString();
+                String targetAges = spinner2.getSelectedItem().toString();
+                int timeToDelete = 72;
+                if (!timeText.getText().toString().isEmpty()) {
+                    timeToDelete = Integer.parseInt(timeText.getText().toString());
+                }
 
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -79,12 +111,8 @@ public class Change extends Activity {
                                         .setPositiveButton("확인", null)
                                         .create();
                                 dialog.show();
-                                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                    @Override
-                                    public void onDismiss(DialogInterface dialog) {
-                                        finish();
-                                    }
-                                });
+                                Change.this.finish();
+
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(Change.this);
                                 dialog = builder.setMessage("Gom민 수정에 실패했습니다.")
@@ -98,9 +126,17 @@ public class Change extends Activity {
                         }
                     }
                 };
-                EditFragmentRequest editFragmentRequest = new EditFragmentRequest(courseID, UserID.getUserID(), courseTitle, courseStroy, courseWorry, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(Change.this);
-                queue.add(editFragmentRequest);
+                if (courseTitle.isEmpty() || courseStroy.isEmpty()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Change.this);
+                    dialog = builder.setMessage("최소 한글자 이상 입력하세요.")
+                            .setPositiveButton("확인", null)
+                            .create();
+                    dialog.show();
+                } else {
+                    WriteFragmentRequest writeFragmentRequest = new WriteFragmentRequest(UserID.getUserID(), courseTitle, courseStroy, targetGender, targetAges, courseWorry, timeToDelete, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(Change.this);
+                    queue.add(writeFragmentRequest);
+                }
             }
         });
     }

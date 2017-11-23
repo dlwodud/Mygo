@@ -5,6 +5,15 @@
         <item>남성</item>
         <item>여성</item>
     </string-array>
+    <string-array name="Ages">
+        <item>나이/전체</item>
+        <item>10대</item>
+        <item>20대</item>
+        <item>30대</item>
+        <item>40대</item>
+        <item>50대</item>
+        <item>60대</item>
+    </string-array>
     <string-array name="Worry">
         <item>연애</item>
         <item>직장</item>

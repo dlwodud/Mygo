@@ -61,7 +61,7 @@ public class CourseListAdapter extends BaseAdapter {
         View v = View.inflate(context, R.layout.coursenotice, null);
         TextView courseTitle = (TextView) v.findViewById(R.id.courseTitle);
         TextView courseStroy = (TextView) v.findViewById(R.id.courseStroy);
-        TextView courseDate1 = (TextView) v.findViewById(R.id.courseDate1);
+        final TextView courseDate1 = (TextView) v.findViewById(R.id.courseDate1);
 
 
         courseTitle.setText(coursesList.get(i).getCourseTitle());
@@ -84,6 +84,9 @@ public class CourseListAdapter extends BaseAdapter {
                 intent.putExtra("title", coursesList.get(i).getCourseTitle());
                 intent.putExtra("stroy", coursesList.get(i).getCourseStroy());
                 intent.putExtra("worry", coursesList.get(i).getCourseWorry());
+                intent.putExtra("age", coursesList.get(i).getTargetAge());
+                intent.putExtra("time", coursesList.get(i).getTimeToDelete());
+                intent.putExtra("gender", coursesList.get(i).getTargetGender());
                 MainActivity.mActivity.startActivity(intent);
             }
         });

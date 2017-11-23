@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,7 +30,10 @@ public class Write01 extends Activity {
 
     private ArrayAdapter adapter;
     private Spinner spinner;
+    private ArrayAdapter adapter2;
+    private Spinner spinner2;
     private AlertDialog dialog;
+    RadioGroup genderGroup;
    // private MyService binder;
 
   /*  private ServiceConnection connection = new ServiceConnection() {
@@ -57,22 +62,34 @@ public class Write01 extends Activity {
         adapter = ArrayAdapter.createFromResource(this, R.array.Worry, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        spinner2 = (Spinner) findViewById(R.id.ageText);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.Ages, android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter2);
+
+        genderGroup = (RadioGroup) findViewById(R.id.genderGroup);
+
         final EditText titleText = (EditText) findViewById(R.id.titleText);
         final EditText StroyText = (EditText) findViewById(R.id.StroyText);
-
+        final EditText timeText = (EditText) findViewById(R.id.timeText);
 
         Button okButton = (Button) findViewById(R.id.okButton);
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(Write01.this, MainActivity.class);
            //     bindService(intent, connection, BIND_AUTO_CREATE);
              //   running =true;
               //  new Thread(new GetCountThread()).start();
                 String courseTitle = titleText.getText().toString();
                 String courseWorry = spinner.getSelectedItem().toString();
                 String courseStroy = StroyText.getText().toString();
+                int genderGroupID = genderGroup.getCheckedRadioButtonId();
+                String targetGender = ((RadioButton) findViewById(genderGroupID)).getText().toString();
+                String targetAges = spinner2.getSelectedItem().toString();
+                int timeToDelete = 72;
+                if (!timeText.getText().toString().isEmpty()) {
+                    timeToDelete = Integer.parseInt(timeText.getText().toString());
+                }
 
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -112,7 +129,7 @@ public class Write01 extends Activity {
                             .create();
                     dialog.show();
                 } else {
-                    WriteFragmentRequest writeFragmentRequest = new WriteFragmentRequest(UserID.getUserID(), courseTitle, courseStroy, courseWorry, responseListener);
+                    WriteFragmentRequest writeFragmentRequest = new WriteFragmentRequest(UserID.getUserID(), courseTitle, courseStroy, targetGender, targetAges, courseWorry, timeToDelete, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(Write01.this);
                     queue.add(writeFragmentRequest);
                 }

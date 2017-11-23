@@ -83,8 +83,11 @@ public class Course extends Fragment {
     private Spinner WorrySpinner;
     private ArrayAdapter GenderAdapter;
     private Spinner GenderSpinner;
+    private ArrayAdapter AgeAdapter;
+    private Spinner AgeSpinner;
     private String courseWorry = "";
     private String userGender ="";
+    private String targetAge ="";
     private ListView courseListView;
     private CourseListAdapter adapter;
     private List<CourseNotice> courseList;
@@ -102,8 +105,13 @@ public class Course extends Fragment {
         GenderAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.Gder, android.R.layout.simple_spinner_dropdown_item);
         GenderSpinner.setAdapter(GenderAdapter);
 
+        AgeSpinner = (Spinner) getView().findViewById(R.id.AgeSpinner);
+        AgeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.Ages, android.R.layout.simple_spinner_dropdown_item);
+        AgeSpinner.setAdapter(AgeAdapter);
+
         WorrySpinner.setSelection(0);
         GenderSpinner.setSelection(0);
+        AgeSpinner.setSelection(0);
 
         courseListView = (ListView) getView().findViewById(R.id.courseListView);
         courseList = new ArrayList<CourseNotice>();
@@ -194,7 +202,11 @@ public class Course extends Fragment {
                     userGender = "*";
                 else
                     userGender = GenderSpinner.getSelectedItem().toString();
-                target = "http://dlwodud200.cafe24.com/CourseList.php?courseWorry=" + URLEncoder.encode(courseWorry, "UTF-8")+ "&userGender="+URLEncoder.encode(userGender, "UTF-8");
+                if (AgeSpinner.getSelectedItemPosition() == 0)
+                    targetAge = "*";
+                else
+                    targetAge = AgeSpinner.getSelectedItem().toString();
+                target = "http://dlwodud200.cafe24.com/CourseList.php?courseWorry=" + URLEncoder.encode(courseWorry, "UTF-8")+ "&targetGender="+URLEncoder.encode(userGender, "UTF-8")+"&targetAge="+URLEncoder.encode(targetAge, "UTF-8");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -226,6 +238,10 @@ public class Course extends Fragment {
                 String courseTitle;  // 제목
                 String courseStroy;  // 내용
                 String courseDate1; // 날짜
+                String targetGender;
+                String targetAge;
+                String timeToDelete;
+
                 int count = 0;
 
                 while (count < jsonArray.length()) {
@@ -235,7 +251,10 @@ public class Course extends Fragment {
                     courseTitle = object.getString("courseTitle");
                     courseStroy = object.getString("courseStroy");
                     courseDate1 = object.getString("courseDate1");
-                    CourseNotice courseNotice = new CourseNotice(courseID, userID, courseTitle, courseStroy, courseWorry, courseDate1);
+                    targetGender = object.getString("targetGender");
+                    targetAge = object.getString("targetAge");
+                    timeToDelete = object.getString("timeToDelete");
+                    CourseNotice courseNotice = new CourseNotice(courseID, userID, courseTitle, courseStroy, courseWorry, courseDate1, targetGender, targetAge, timeToDelete);
                     courseList.add(courseNotice);
                     count++;
                 }

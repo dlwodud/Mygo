@@ -104,7 +104,7 @@
                 <Button
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:hint="내글"
+                    android:hint="히스토리"
                     android:layout_gravity="left"
                     android:padding="10dp"
                     android:textColor="#ffffff"

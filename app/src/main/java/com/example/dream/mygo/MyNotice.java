@@ -11,6 +11,8 @@ public class MyNotice {
     String courseStroy;  // 내용
     String courseDate1;  //  날짜
     String courseWorry;
+    String targetGender;
+    String targetAge;
 
     public int getCourseID() {
         return courseID;
@@ -69,5 +71,23 @@ public class MyNotice {
         this.courseStroy = courseStroy;
         this.courseDate1 = courseDate1;
         this.courseWorry = courseWorry;
+        this.targetGender = targetGender;
+        this.targetAge = targetAge;
+    }
+
+    public String getTargetGender() {
+        return targetGender;
+    }
+
+    public void setTargetGender(String targetGender) {
+        this.targetGender = targetGender;
+    }
+
+    public String getTargetAge() {
+        return targetAge;
+    }
+
+    public void setTargetAge(String targetAge) {
+        this.targetAge = targetAge;
     }
 }

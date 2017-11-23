@@ -9,8 +9,23 @@ public class CourseNotice {
     String userID; //게시자
     String courseTitle;  // 제목
     String courseStroy;  // 내용
-    String courseDate1;  //  날짜
     String courseWorry;
+    String courseDate1;  //  날짜
+    String targetGender;
+    String targetAge;
+    String timeToDelete;
+
+    public CourseNotice(int courseID, String userID, String courseTitle, String courseStroy, String courseWorry, String courseDate1, String targetGender, String targetAge, String timeToDelete) {
+        this.courseID = courseID;
+        this.userID = userID;
+        this.courseTitle = courseTitle;
+        this.courseStroy = courseStroy;
+        this.courseWorry = courseWorry;
+        this.courseDate1 = courseDate1;
+        this.targetGender = targetGender;
+        this.targetAge = targetAge;
+        this.timeToDelete = timeToDelete;
+    }
 
     public int getCourseID() {
         return courseID;
@@ -62,12 +77,27 @@ public class CourseNotice {
     }
 
 
-    public CourseNotice(int courseID, String userID, String courseTitle, String courseStroy, String courseWorry, String courseDate1) {
-        this.courseID = courseID;
-        this.userID = userID;
-        this.courseTitle = courseTitle;
-        this.courseStroy = courseStroy;
-        this.courseDate1 = courseDate1;
-        this.courseWorry = courseWorry;
+    public String getTargetGender() {
+        return targetGender;
+    }
+
+    public void setTargetGender(String targetGender) {
+        this.targetGender = targetGender;
+    }
+
+    public String getTargetAge() {
+        return targetAge;
+    }
+
+    public void setTargetAge(String targetAge) {
+        this.targetAge = targetAge;
+    }
+
+    public String getTimeToDelete() {
+        return timeToDelete;
+    }
+
+    public void setTimeToDelete(String timeToDelete) {
+        this.timeToDelete = timeToDelete;
     }
 }

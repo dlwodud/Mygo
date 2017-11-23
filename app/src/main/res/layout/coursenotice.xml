@@ -42,6 +42,7 @@
                 android:textColor="@color/colorPont2"
                 android:textStyle="bold" />
 
+
             <Button
                 android:id="@+id/editButton"
                 android:layout_width="40dp"
