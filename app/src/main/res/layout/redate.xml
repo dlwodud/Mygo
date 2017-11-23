@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dream.mygo.Redate">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="368dp"
@@ -12,7 +15,6 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
-
         <TextView
             android:layout_width="280dp"
             android:layout_height="50dp"
@@ -82,6 +84,7 @@
             android:layout_gravity="center"
             android:id="@+id/okButton"/>
 
-
     </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
